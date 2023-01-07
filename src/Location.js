@@ -1,0 +1,61 @@
+import React, { useState, useEffect } from "react";
+import MapView, { Circle, Marker } from "react-native-maps";
+import { StyleSheet, View } from "react-native";
+import Location from "expo-location";
+
+
+export default function App() {
+  const [pin, setPin] = useState({
+    latitude: 13.059278,
+    longitude: 80.233656,
+  });
+  useEffect(() => {
+    (async () => {
+      let { status } = await Location.requestForegroundPermissionsAsync();
+      if (status !== "granted") {
+          console.log("Permission to access location was denied");
+        return;
+      }
+
+      let location = await Location.getCurrentPositionAsync({});
+      console.log(location);
+      setPin({ latitude: location.coords.latitude, longitude: location.coords.longitude});
+    })();
+  }, []);
+
+  return (
+    <View style={styles.container}>
+      <MapView
+        style={styles.map}
+        initialRegion={{
+          latitude: 13.059278,
+          longitude: 80.233656,
+          latitudeDelta: 0.002,
+          longitudeDelta: 0.002,
+        }}
+        showsUserLocation={true}
+      >
+        <Marker
+          coordinate={pin}
+          title="child"
+          description="The place where your child last visited"
+        
+        />
+        <Circle
+          center={pin}
+          radius={100}
+        ></Circle>
+      </MapView>
+    </View>
+  );
+}
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
+  map: {
+    width: "100%",
+    height: "100%",
+  },
+});

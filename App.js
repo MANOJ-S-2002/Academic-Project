@@ -8,6 +8,7 @@ import Signup from "./src/Signup";
 import DrawerNavigator from "./src/DrawerNavigator";
 import HelpPage from "./src/HelpPage"
 import About from "./src/AboutUs"
+import Location from "./src/Location"
 
 const Stack = createNativeStackNavigator();
 export default function App() {
@@ -18,7 +19,7 @@ export default function App() {
           screenOptions={{
             headerShown: false,
           }}
-          initialRouteName="Login"
+          initialRouteName="Location"
         >
           <Stack.Screen name="Login" component={Login} />
           <Stack.Screen name="Home" component={Home} />
@@ -26,6 +27,7 @@ export default function App() {
           <Stack.Screen name="Signup" component={Signup} />
           <Stack.Screen name="Help" component={HelpPage} />
           <Stack.Screen name="About" component={About} />
+          <Stack.Screen name="Location" component={Location} />
         </Stack.Navigator>
       </NavigationContainer>
     </>
