@@ -1,9 +1,9 @@
 import React from "react";
 import { View, StyleSheet, ImageBackground, Keyboard } from "react-native";
 import { TextInput, Text, Button } from "react-native-paper";
-// import bg from "../images/bg.jpg";
+import image from "../components/login.png"
 
-// const image = bg;
+
 export default function Signup({ navigation }) {
   const [inputs, setInputs] = React.useState({
     email: "",
@@ -18,31 +18,31 @@ export default function Signup({ navigation }) {
     Keyboard.dismiss();
     let isValid = true;
 
-    if (!inputs.email) {
-      handleError("Please input email", "email");
-      isValid = false;
-    } else if (!inputs.email.match(/\S+@\S+\.\S+/)) {
-      handleError("Please input a valid email", "email");
-      isValid = false;
-    }
+    // if (!inputs.email) {
+    //   handleError("Please input email", "email");
+    //   isValid = false;
+    // } else if (!inputs.email.match(/\S+@\S+\.\S+/)) {
+    //   handleError("Please input a valid email", "email");
+    //   isValid = false;
+    // }
 
-    if (!inputs.fullname) {
-      handleError("Please input fullname", "fullname");
-      isValid = false;
-    }
+    // if (!inputs.fullname) {
+    //   handleError("Please input fullname", "fullname");
+    //   isValid = false;
+    // }
 
-    if (!inputs.phone) {
-      handleError("Please input phone number", "phone");
-      isValid = false;
-    }
+    // if (!inputs.phone) {
+    //   handleError("Please input phone number", "phone");
+    //   isValid = false;
+    // }
 
-    if (!inputs.password) {
-      handleError("Please input password", "password");
-      isValid = false;
-    } else if (inputs.password.length < 5) {
-      handleError("Min password length of 5", "password");
-      isValid = false;
-    }
+    // if (!inputs.password) {
+    //   handleError("Please input password", "password");
+    //   isValid = false;
+    // } else if (inputs.password.length < 5) {
+    //   handleError("Min password length of 5", "password");
+    //   isValid = false;
+    // }
 
     if (isValid) {
       navigation.navigate("Login");
@@ -57,8 +57,8 @@ export default function Signup({ navigation }) {
   };
   return (
     <ImageBackground
-      // style={styles.image}
-      //  source={image}
+      style={styles.image}
+       source={image}
       resizeMode="cover"
     >
       <View style={styles.signUpContainer}>
@@ -144,13 +144,13 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
   },
-  //   image: {
-  //     height: "auto",
-  //     width: "auto",
-  //     flex: 1,
-  //     alignItems: "center",
-  //     justifyContent: "center",
-  //   },
+    image: {
+      height: "auto",
+      width: "auto",
+      flex: 1,
+      alignItems: "center",
+      justifyContent: "center",
+    },
   row1: {
     width: 300,
     height: 50,

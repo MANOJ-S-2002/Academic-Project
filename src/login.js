@@ -8,7 +8,7 @@ import {
   Alert,
 } from "react-native";
 import { TextInput, Button } from "react-native-paper";
-// import image from "../images/bg.jpg";
+import image from "../components/login.png"
 
 // export default function Login({ navigation }) {
 export default function Login({ navigation }) {
@@ -19,14 +19,14 @@ export default function Login({ navigation }) {
   const validate = async () => {
     Keyboard.dismiss();
     let isValid = true;
-    if (!inputs.email) {
-      handleError("Please input email", "email");
-      isValid = false;
-    }
-    if (!inputs.password) {
-      handleError("Please input password", "password");
-      isValid = false;
-    }
+    // if (!inputs.email) {
+    //   handleError("Please input email", "email");
+    //   isValid = false;
+    // }
+    // if (!inputs.password) {
+    //   handleError("Please input password", "password");
+    //   isValid = false;
+    // }
     if (isValid) {
       navigation.navigate("Home");
       // login();
@@ -45,7 +45,7 @@ export default function Login({ navigation }) {
     <ImageBackground
       style={styles.backgroundImage}
       sizeMode="cover"
-      //   source={image}
+        source={image}
     >
       <View style={styles.loginContainer}>
         <Text
@@ -94,7 +94,7 @@ export default function Login({ navigation }) {
             borderRadius: 7,
             fontSize: 20,
             fontWeight: "bold",
-            paddingTop: 130,
+            paddingTop: 70,
 
             color: "black",
             // backgroundColor: "white",
