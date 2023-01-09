@@ -2,9 +2,16 @@ import React, { useState, useEffect } from "react";
 import MapView, { Circle, Marker } from "react-native-maps";
 import { StyleSheet, View } from "react-native";
 import * as Location from "expo-location";
+import { db } from "../FireBase";
+import {ref,set} from "firebase/database"
 
 
 export default function App() {
+
+  
+
+  
+  
   const pin1 = {
     latitude: 13.059278,
     longitude: 80.233656,
@@ -23,11 +30,20 @@ export default function App() {
       }
 
       let location = await Location.getCurrentPositionAsync({});
-      console.log(location);
+      console.log(pin1);
       setPin({ latitude: location.coords.latitude, longitude: location.coords.longitude});
     })();
   }, []);
 
+useEffect(()=>{
+  set(ref(db,'Location/'),{
+    Latitude:pin1.latitude,
+    Longitude:pin1.longitude
+  })
+  .then()
+  .catch((err)=>console.log("error"))
+})
+  
   return (
     <View style={styles.container}>
       <MapView

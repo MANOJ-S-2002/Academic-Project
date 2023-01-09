@@ -9,7 +9,7 @@ import {
 } from "react-native";
 import { TextInput, Button } from "react-native-paper";
 import image from "../components/login.png"
-// import {auth} from "../FireBase"
+import {auth} from "../FireBase"
 
 // export default function Login({ navigation }) {
 export default function Login({ navigation }) {
@@ -20,22 +20,22 @@ export default function Login({ navigation }) {
   const validate = async () => {
     Keyboard.dismiss();
     let isValid = true;
-    // if (!inputs.email) {
-    //   handleError("Please input email", "email");
-    //   isValid = false;
-    // }
-    // if (!inputs.password) {
-    //   handleError("Please input password", "password");
-    //   isValid = false;
-    // }
+    if (!inputs.email) {
+      handleError("Please input email", "email");
+      isValid = false;
+    }
+    if (!inputs.password) {
+      handleError("Please input password", "password");
+      isValid = false;
+    }
     if (isValid) {
-      // auth
-      //   .signInWithEmailAndPassword(email, password)
-      //   .then((userCredentials) => {
-      //     const user = userCredentials.user;
-      //     console.log("Logged in with:", user.email);
-      //   })
-      //   .catch((error) => alert(error.message));
+      auth
+        .signInWithEmailAndPassword(inputs.email, inputs.password)
+        .then((userCredentials) => {
+          const user = userCredentials.user;
+          console.log("Logged in with:", user.email);
+        })
+        .catch((error) => alert(error.message));
       navigation.navigate("Home");
       // login();
     }

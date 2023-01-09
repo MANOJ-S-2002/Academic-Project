@@ -2,7 +2,7 @@ import React from "react";
 import { View, StyleSheet, ImageBackground, Keyboard } from "react-native";
 import { TextInput, Text, Button } from "react-native-paper";
 import image from "../components/login.png"
-// import { auth } from "../FireBase";
+import { auth } from "../FireBase";
 
 export default function Signup({ navigation }) {
   const [inputs, setInputs] = React.useState({
@@ -11,8 +11,13 @@ export default function Signup({ navigation }) {
     // phone: "",
     password: "",
   });
+
+
   const [errors, setErrors] = React.useState({});
   const [loading, setLoading] = React.useState(false);
+
+
+
 
   const validate = () => {
     Keyboard.dismiss();
@@ -44,14 +49,15 @@ export default function Signup({ navigation }) {
       isValid = false;
     }
 
+
     if (isValid) {
-      // auth
-      //   .createUserWithEmailAndPassword(email, password)
-      //   .then((userCredentials) => {
-      //     const user = userCredentials.user;
-      //     console.log("Registered with:", user.email);
-      //   })
-      //   .catch((error) => alert(error.message));
+      auth
+        .createUserWithEmailAndPassword(email, password)
+        .then((userCredentials) => {
+          const user = userCredentials.user;
+          console.log("Registered with:", user.email);
+        })
+        .catch((error) => alert(error.message));
       navigation.navigate("Login");
     }
   };
