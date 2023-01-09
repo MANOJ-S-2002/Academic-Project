@@ -8,7 +8,8 @@ import {
   Alert,
 } from "react-native";
 import { TextInput, Button } from "react-native-paper";
-// import image from "../images/bg.jpg";
+import image from "../components/login.png"
+import {auth} from "../FireBase"
 
 // export default function Login({ navigation }) {
 export default function Login({ navigation }) {
@@ -28,10 +29,19 @@ export default function Login({ navigation }) {
       isValid = false;
     }
     if (isValid) {
+      auth
+        .signInWithEmailAndPassword(inputs.email, inputs.password)
+        .then((userCredentials) => {
+          const user = userCredentials.user;
+          console.log("Logged in with:", user.email);
+        })
+        .catch((error) => alert(error.message));
       navigation.navigate("Home");
       // login();
     }
   };
+
+
 
   const handleOnchange = (text, input) => {
     setInputs((prevState) => ({ ...prevState, [input]: text }));
@@ -45,7 +55,7 @@ export default function Login({ navigation }) {
     <ImageBackground
       style={styles.backgroundImage}
       sizeMode="cover"
-      //   source={image}
+        source={image}
     >
       <View style={styles.loginContainer}>
         <Text
@@ -94,7 +104,7 @@ export default function Login({ navigation }) {
             borderRadius: 7,
             fontSize: 20,
             fontWeight: "bold",
-            paddingTop: 130,
+            paddingTop: 70,
 
             color: "black",
             // backgroundColor: "white",
@@ -119,7 +129,7 @@ const styles = StyleSheet.create({
   loginContainer: {
     // backgroundColor: `gray`,
     padding: 10,
-    paddingTop: 150,
+    paddingTop: 90,
 
     // flex: 1,
     borderRadius: 15,

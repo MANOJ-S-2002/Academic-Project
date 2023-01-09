@@ -3,9 +3,8 @@
     "name": "MP",
     "slug": "MP",
     "version": "1.0.0",
-    "assetBundlePatterns": [
-      "**/*"
-    ]
+    "assetBundlePatterns": ["**/*"]
   },
-  "name": "MP"
+  "name": "MP",
+  "permissions": ["ACCESS_FINE_LOCATION"]
 }

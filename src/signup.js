@@ -1,18 +1,23 @@
 import React from "react";
 import { View, StyleSheet, ImageBackground, Keyboard } from "react-native";
 import { TextInput, Text, Button } from "react-native-paper";
-// import bg from "../images/bg.jpg";
+import image from "../components/login.png"
+import { auth } from "../FireBase";
 
-// const image = bg;
 export default function Signup({ navigation }) {
   const [inputs, setInputs] = React.useState({
     email: "",
-    fullname: "",
-    phone: "",
+    // fullname: "",
+    // phone: "",
     password: "",
   });
+
+
   const [errors, setErrors] = React.useState({});
   const [loading, setLoading] = React.useState(false);
+
+
+
 
   const validate = () => {
     Keyboard.dismiss();
@@ -26,15 +31,15 @@ export default function Signup({ navigation }) {
       isValid = false;
     }
 
-    if (!inputs.fullname) {
-      handleError("Please input fullname", "fullname");
-      isValid = false;
-    }
+    // if (!inputs.fullname) {
+    //   handleError("Please input fullname", "fullname");
+    //   isValid = false;
+    // }
 
-    if (!inputs.phone) {
-      handleError("Please input phone number", "phone");
-      isValid = false;
-    }
+    // if (!inputs.phone) {
+    //   handleError("Please input phone number", "phone");
+    //   isValid = false;
+    // }
 
     if (!inputs.password) {
       handleError("Please input password", "password");
@@ -44,7 +49,15 @@ export default function Signup({ navigation }) {
       isValid = false;
     }
 
+
     if (isValid) {
+      auth
+        .createUserWithEmailAndPassword(email, password)
+        .then((userCredentials) => {
+          const user = userCredentials.user;
+          console.log("Registered with:", user.email);
+        })
+        .catch((error) => alert(error.message));
       navigation.navigate("Login");
     }
   };
@@ -57,8 +70,8 @@ export default function Signup({ navigation }) {
   };
   return (
     <ImageBackground
-      // style={styles.image}
-      //  source={image}
+      style={styles.image}
+       source={image}
       resizeMode="cover"
     >
       <View style={styles.signUpContainer}>
@@ -75,7 +88,7 @@ export default function Signup({ navigation }) {
         >
           SIGN UP
         </Text>
-        <TextInput
+        {/* <TextInput
           style={styles.row1}
           mode="outlined"
           onChangeText={(text) => handleOnchange(text, "fullname")}
@@ -95,7 +108,7 @@ export default function Signup({ navigation }) {
           label="Phone Number"
           placeholder="Enter your phone no"
           error={errors.phone}
-        />
+        /> */}
         <TextInput
           style={styles.row1}
           mode="outlined"
@@ -144,13 +157,13 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
   },
-  //   image: {
-  //     height: "auto",
-  //     width: "auto",
-  //     flex: 1,
-  //     alignItems: "center",
-  //     justifyContent: "center",
-  //   },
+    image: {
+      height: "auto",
+      width: "auto",
+      flex: 1,
+      alignItems: "center",
+      justifyContent: "center",
+    },
   row1: {
     width: 300,
     height: 50,
