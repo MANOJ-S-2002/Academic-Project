@@ -1,13 +1,13 @@
 import com.facebook.react.bridge.ReactContextBaseJavaModule;
 import com.facebook.react.bridge.ReactMethod;
-public class Hello extends ReactContextBaseJavaModule{
-        public Hello(ReactApplicationContext reactcontext) {
+public class HelloYtModule extends ReactContextBaseJavaModule{
+        public HelloYtModule(ReactApplicationContext reactcontext) {
         super(reactcontext);
     }
     @NonNull
     @Override
     public String getName() {
-        return "Hello";
+        return "HelloYt";
     }
 @ReactMethod
     public void sayHello(String name, Callback callback) {

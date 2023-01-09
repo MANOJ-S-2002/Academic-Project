@@ -9,6 +9,7 @@ import {
 } from "react-native";
 import { TextInput, Button } from "react-native-paper";
 import image from "../components/login.png"
+// import {auth} from "../FireBase"
 
 // export default function Login({ navigation }) {
 export default function Login({ navigation }) {
@@ -28,10 +29,19 @@ export default function Login({ navigation }) {
     //   isValid = false;
     // }
     if (isValid) {
+      // auth
+      //   .signInWithEmailAndPassword(email, password)
+      //   .then((userCredentials) => {
+      //     const user = userCredentials.user;
+      //     console.log("Logged in with:", user.email);
+      //   })
+      //   .catch((error) => alert(error.message));
       navigation.navigate("Home");
       // login();
     }
   };
+
+
 
   const handleOnchange = (text, input) => {
     setInputs((prevState) => ({ ...prevState, [input]: text }));
@@ -119,7 +129,7 @@ const styles = StyleSheet.create({
   loginContainer: {
     // backgroundColor: `gray`,
     padding: 10,
-    paddingTop: 150,
+    paddingTop: 90,
 
     // flex: 1,
     borderRadius: 15,

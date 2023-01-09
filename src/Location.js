@@ -1,14 +1,19 @@
 import React, { useState, useEffect } from "react";
 import MapView, { Circle, Marker } from "react-native-maps";
 import { StyleSheet, View } from "react-native";
-import Location from "expo-location";
+import * as Location from "expo-location";
 
 
 export default function App() {
+  const pin1 = {
+    latitude: 13.059278,
+    longitude: 80.233656,
+  };
   const [pin, setPin] = useState({
     latitude: 13.059278,
     longitude: 80.233656,
   });
+  // useEffect(()=>console.log(pin),pin);
   useEffect(() => {
     (async () => {
       let { status } = await Location.requestForegroundPermissionsAsync();
@@ -34,15 +39,20 @@ export default function App() {
           longitudeDelta: 0.002,
         }}
         showsUserLocation={true}
+        onUserLocationChange={(e) => {
+          setPin({
+            latitude: e.nativeEvent.coordinate.latitude,
+            longitude: e.nativeEvent.coordinate.longitude,
+          });
+        }}
       >
         <Marker
-          coordinate={pin}
+          coordinate={pin1}
           title="child"
           description="The place where your child last visited"
-        
         />
         <Circle
-          center={pin}
+          center={pin1}
           radius={100}
         ></Circle>
       </MapView>
