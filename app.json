@@ -3,8 +3,17 @@
     "name": "MP",
     "slug": "MP",
     "version": "1.0.0",
-    "assetBundlePatterns": ["**/*"]
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "85fbaa87-8c92-49dc-88b5-85c970996076"
+      }
+    }
   },
   "name": "MP",
-  "permissions": ["ACCESS_FINE_LOCATION"]
+  "permissions": [
+    "ACCESS_FINE_LOCATION"
+  ]
 }

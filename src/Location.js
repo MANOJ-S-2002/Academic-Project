@@ -36,7 +36,7 @@ export default function App() {
   }, []);
 
 useEffect(()=>{
-  set(ref(db,'Location/'),{
+  set(ref(db,'Report/Location/'),{
     Latitude:pin1.latitude,
     Longitude:pin1.longitude
   })

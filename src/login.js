@@ -65,7 +65,6 @@ export default function Login({ navigation }) {
             fontSize: 30,
             fontWeight: "bold",
             color: "black",
-            backgroundColor: "",
           }}
         >
           LOGIN
