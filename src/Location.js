@@ -54,7 +54,7 @@ useEffect(()=>{
     <View style={styles.container}>
       <MapView
         style={styles.map}
-        initialRegion={initial}
+        // initialRegion={initial}
         showsUserLocation={true}
         onUserLocationChange={(e) => {
           setPin({
