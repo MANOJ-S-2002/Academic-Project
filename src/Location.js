@@ -54,7 +54,12 @@ useEffect(()=>{
     <View style={styles.container}>
       <MapView
         style={styles.map}
-        // initialRegion={initial}
+        initialRegion={{
+          latitude: 13.059278,
+          longitude: 80.233656,
+          latitudeDelta: 0.002,
+          longitudeDelta: 0.002,
+        }}
         showsUserLocation={true}
         onUserLocationChange={(e) => {
           setPin({
@@ -68,10 +73,7 @@ useEffect(()=>{
           title="child"
           description="The place where your child last visited"
         />
-        <Circle
-          center={pin1}
-          radius={100}
-        ></Circle>
+        <Circle center={pin1} radius={100}></Circle>
       </MapView>
     </View>
   );
