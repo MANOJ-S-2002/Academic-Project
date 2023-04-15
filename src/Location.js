@@ -16,6 +16,12 @@ export default function App() {
     latitude: 13.059278,
     longitude: 80.233656,
   };
+  const initial = {
+    latitude: 13.059278,
+    longitude: 80.233656,
+    latitudeDelta: 0.002,
+    longitudeDelta: 0.002,
+  };
   const [pin, setPin] = useState({
     latitude: 13.059278,
     longitude: 80.233656,
@@ -48,12 +54,7 @@ useEffect(()=>{
     <View style={styles.container}>
       <MapView
         style={styles.map}
-        initialRegion={{
-          latitude: 13.059278,
-          longitude: 80.233656,
-          latitudeDelta: 0.002,
-          longitudeDelta: 0.002,
-        }}
+        initialRegion={initial}
         showsUserLocation={true}
         onUserLocationChange={(e) => {
           setPin({

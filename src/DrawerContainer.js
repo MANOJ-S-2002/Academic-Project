@@ -11,7 +11,6 @@ import KeyPad from "./KeyPad";
 import AppUsage from "./AppUsage";
 import Profile from "./Profile";
 import LoginStackNavigator from "./LoginStackNavigator";
-
 const Drawer = createDrawerNavigator();
 
 export default function DrawerContainer(props) {
@@ -43,6 +42,7 @@ export default function DrawerContainer(props) {
           ),
         }}
       />
+    
       <Drawer.Screen
         name="Location"
         component={Location}

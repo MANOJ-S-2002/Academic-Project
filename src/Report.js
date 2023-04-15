@@ -59,9 +59,10 @@ const html = `
       <View>
         {report.map((rep) => (
           <>
-            <Text>Loaction:{rep.Location.Latitude}</Text>
-            <Text>{rep.Location.Longitude}</Text>
-            <Text>Negative Search{rep.Search.Search}</Text>
+            <Text>Location:
+              Latitude:{rep.Location.Latitude}</Text>
+            <Text>Longitude:{rep.Location.Longitude}</Text>
+            <Text>Negative Search:{rep.Search.Search}</Text>
           </>
         ))}
       </View>
@@ -77,6 +78,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#fff",
     alignItems: "center",
     justifyContent: "center",
+    paddingBottom: 5
   },
   textInput: {
     alignSelf: "stretch",
