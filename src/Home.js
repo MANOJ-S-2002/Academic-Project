@@ -1,27 +1,115 @@
 import React from "react";
-import { ImageBackground, StyleSheet, Text, View } from "react-native";
-import image from "../components/login.png";
+import { View, Text, Image, StyleSheet, FlatList } from "react-native";
 
-export default function Home() {
+// Define motivational quotes data
+const quotes = [
+
+  {
+    id: 1,
+    category: "happy",
+    image: require("../components/motivation/m4.jpg"),
+  },
+  {
+    id: 2,
+    category: "happy",
+
+    image: require("../components/motivation/m6.jpg"),
+  },
+  {
+    id: 3,
+    category: "happy",
+
+    image: require("../components/motivation/m3.jpg"),
+  },
+  {
+    id: 4,
+    category: "happy",
+
+    image: require("../components/motivation/m1.jpg"),
+  },
+  {
+    id: 5,
+    category: "sad",
+
+    image: require("../components/motivation/m3.jpg"),
+  },
+  {
+    id: 6,
+    category: "sad",
+
+    image: require("../components/motivation/m2.jpg"),
+  },
+  {
+    id: 7,
+    category: "sad",
+
+    image: require("../components/motivation/m3.jpg"),
+  },
+  {
+    id: 8,
+    category: "sad",
+
+    image: require("../components/motivation/m2.jpg"),
+  },
+  {
+    id: 9,
+    category: "neutral",
+
+    image: require("../components/motivation/m6.jpg"),
+  },
+  {
+    id: 10,
+    category: "neutral",
+
+    image: require("../components/motivation/m4.jpg"),
+  },
+];
+
+const MotivationalQuotesApp = () => {
+
+  // const []
+  // Render individual quote card
+ const renderQuoteCard = ({ item }) =>
+   item && item.category === "happy" ? (
+     <View style={styles.cardContainer}>
+       <Image source={item.image} style={styles.image} resizeMode="contain" />
+     </View>
+   ) : null;
   return (
-    <>
-      <ImageBackground style={Styles.image} source={image}>
-        
-        <View style={{ paddingTop:300}}>
-          <Text style={{padding:20,color:"white" ,backgroundColor:"black" , borderRadius:10,}}>
-            Hello parents this app is to maintain your students activities
-          </Text>
-        </View>
-      </ImageBackground>
-    </>
+    <View style={styles.container}>
+      <FlatList
+        data={quotes}
+        renderItem={renderQuoteCard}
+        keyExtractor={(item) => item.id.toString()}
+      />
+    </View>
   );
-}
+};
 
-const Styles = StyleSheet.create({
-  image: {
-    width: "100%",
-    height: "auto",
+// Styles
+const styles = StyleSheet.create({
+  container: {
+    // flex: 1,
+    backgroundColor: "#f5f5f5",
+    padding: 16,
+  },
+  cardContainer: {
+    backgroundColor: "#fff",
+    borderRadius: 8,
+    elevation: 2,
+    marginVertical: 8,
+    padding: 16,
     flex: 1,
     alignItems: "center",
+    justifyContent: "center",
+  },
+  image: {
+    flex: 1,
+    width: "100%",
+    // height: "100%",
+    borderRadius: 8,
+    marginBottom: 8,
   },
 });
+
+export default MotivationalQuotesApp;

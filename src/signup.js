@@ -1,7 +1,7 @@
 import React from "react";
 import { View, StyleSheet, ImageBackground, Keyboard } from "react-native";
 import { TextInput, Text, Button } from "react-native-paper";
-import image from "../components/login.png"
+import image from "../components/login.png";
 import { auth } from "../FireBase";
 
 export default function Signup({ navigation }) {
@@ -12,12 +12,8 @@ export default function Signup({ navigation }) {
     password: "",
   });
 
-
   const [errors, setErrors] = React.useState({});
   const [loading, setLoading] = React.useState(false);
-
-
-
 
   const validate = () => {
     Keyboard.dismiss();
@@ -49,7 +45,6 @@ export default function Signup({ navigation }) {
       isValid = false;
     }
 
-
     if (isValid) {
       auth
         .createUserWithEmailAndPassword(email, password)
@@ -69,11 +64,7 @@ export default function Signup({ navigation }) {
     setErrors((prevState) => ({ ...prevState, [input]: error }));
   };
   return (
-    <ImageBackground
-      style={styles.image}
-       source={image}
-      resizeMode="cover"
-    >
+    <ImageBackground style={styles.image} source={image} resizeMode="cover">
       <View style={styles.signUpContainer}>
         <Text
           style={{
@@ -142,6 +133,27 @@ export default function Signup({ navigation }) {
         >
           Signup
         </Button>
+        <Text
+          style={{
+            margin: 10,
+            borderRadius: 7,
+            fontSize: 20,
+            fontWeight: "bold",
+            paddingTop: 20,
+            color: "black",
+            // backgroundColor: "white",
+          }}
+        >
+          Already a User
+        </Text>
+        <Button
+          style={{ margin: 10 }}
+          mode="contained"
+          color="orange"
+          onPress={() => navigation.navigate("Login")}
+        >
+          Login here
+        </Button>
       </View>
     </ImageBackground>
   );
@@ -151,23 +163,25 @@ const styles = StyleSheet.create({
   signUpContainer: {
     // backgroundColor: `gray`,
     padding: 10,
-    paddingTop: 120,
+    paddingTop: 90,
     // flex: 1,
     borderRadius: 15,
     alignItems: "center",
     justifyContent: "center",
   },
-    image: {
-      height: "auto",
-      width: "auto",
-      flex: 1,
-      alignItems: "center",
-      justifyContent: "center",
-    },
+  image: {
+    height: "auto",
+    width: "auto",
+    flex: 1,
+    alignItems: "center",
+    justifyContent: "center",
+  },
   row1: {
     width: 300,
     height: 50,
+
     marginHorizontal: 25,
+    margin: 10,
     fontSize: 16,
     borderRadius: 25,
   },

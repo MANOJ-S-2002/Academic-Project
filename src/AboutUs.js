@@ -1,4 +1,6 @@
-import React from "react";
+
+
+import React, { useEffect, useState } from "react";
 import {
   StyleSheet,
   Text,
@@ -10,8 +12,36 @@ import {
 } from "react-native";
 import { TextInput, Button } from "react-native-paper";
 import Ionicons from "react-native-vector-icons/Ionicons";
+import about from "../components/about.png"
+
 
 const Aboutus = () => {
+  const [data, setData] = useState([]);
+
+  // useEffect(() => {
+
+  const fetchData=()=>{
+    console.log("clicked")
+       fetch("http://10.0.2.2:5000/predict")
+
+    // fetch("http://192.168.103.225:5000/predict")
+      .then((res) => 
+        res.json())
+      .then((data) => {
+        console.log("insdem 2 then");
+        setData(data);
+        console.log(data);
+      })
+      .catch((e) => {
+
+        console.log("insdem errr");
+        console.log(e)
+      });
+  // }, []);
+    }
+// let a=1//;/
+// useEffect(()=> console.log(a++,data),[])
+
   return (
     <>
       <SafeAreaView>
@@ -20,7 +50,7 @@ const Aboutus = () => {
             <Text
               style={{ fontSize: 15, fontWeight: "bold", textAlign: "center" }}
             >
-              About us
+           {data}
             </Text>
             <View>
               <Text
@@ -31,14 +61,15 @@ const Aboutus = () => {
                   padding: 5,
                   textAlign: "center",
                 }}
+                onPress={()=>fetchData()}
               >
-               SPAM
+                SPAM
               </Text>
             </View>
 
             <View>
               <Image
-                // source={}
+                source={about}
                 style={{
                   height: 350,
                   width: 330,
@@ -59,10 +90,11 @@ const Aboutus = () => {
             </View>
             <View>
               <Text style={{ fontSize: 15, padding: 10 }}>
-                To provide children activity maintenance and genetrate a report and that will be sent to the parents
+                To provide children activity maintenance and genetrate a report
+                and that will be sent to the parents
               </Text>
             </View>
-           
+
             <View>
               <Text
                 style={{
@@ -83,7 +115,7 @@ const Aboutus = () => {
                   style={styles.input}
                   mode="outlined"
                   label="Enter Email"
-                //   style={{ marginLeft: 0 }}
+                  //   style={{ marginLeft: 0 }}
                 />
               </View>
               <View>
@@ -92,7 +124,7 @@ const Aboutus = () => {
                   style={styles.input}
                   mode="outlined"
                   label="Enter Message"
-                //   style={{ height: 150, marginLeft: 0 }}
+                  //   style={{ height: 150, marginLeft: 0 }}
                 />
               </View>
               <View>
@@ -141,7 +173,7 @@ const Aboutus = () => {
                 <Ionicons
                   name="logo-instagram"
                   style={styles.icons}
-                //   style={{ color: "#8a3ab9", fontSize: 30 }}
+                  //   style={{ color: "#8a3ab9", fontSize: 30 }}
                 />
               </Pressable>
               <Pressable>

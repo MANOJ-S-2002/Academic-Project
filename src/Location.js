@@ -54,12 +54,12 @@ useEffect(()=>{
     <View style={styles.container}>
       <MapView
         style={styles.map}
-        initialRegion={{
-          latitude: 13.059278,
-          longitude: 80.233656,
-          latitudeDelta: 0.002,
-          longitudeDelta: 0.002,
-        }}
+        // initialRegion={{
+        //   latitude: 13.059278,
+        //   longitude: 80.233656,
+        //   latitudeDelta: 0.002,
+        //   longitudeDelta: 0.002,
+        // }}
         showsUserLocation={true}
         onUserLocationChange={(e) => {
           setPin({

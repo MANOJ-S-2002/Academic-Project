@@ -4,119 +4,70 @@ import { TouchableOpacity } from "react-native";
 
 export default function Profile({ navigation }) {
   return (
-    <View >
-      <View style={style.container1}>
-        <Text style={style.title}>User Profile</Text>
+    <View style={styles.container}>
+      <View style={styles.header}>
+        <Text style={styles.title}>User Profile</Text>
       </View>
-      <View style={{ padding: 20, alignItems: "center" }}>
-      </View>
-      <View style={{ position: "absolute" }}>
-     
-        <View style={{ paddingTop:50, paddingLeft: 100 }}>
-    
-          <Text style={style.profile}>Andrew</Text>
-          <Text style={style.profile}>andrew@gmail.com</Text>
-          <Text style={style.profile}>LICET, Nungambakkam, Chennai,India</Text>
-
-          <Text style={style.profile}>89898990</Text>
-
-
-          <TouchableOpacity
-            style={style.logico}
-            onPress={() => {
-              navigation.navigate("Home");
-            }}
-          >
-           
-          </TouchableOpacity>
-        </View>
-      
+      <View style={styles.profileContainer}>
+        <Text style={styles.profileItem}>MANOJ S</Text>
+        <Text style={styles.profileItem}>manoj@gmail.com</Text>
+        <Text style={styles.profileItem}>
+          LICET, Nungambakkam, Chennai, India
+        </Text>
+        <Text style={styles.profileItem}>89898990</Text>
+        <TouchableOpacity
+          style={styles.buttonContainer}
+          onPress={() => navigation.navigate("Home")}
+        >
+          <Text style={styles.buttonText}>Go to Home</Text>
+        </TouchableOpacity>
       </View>
     </View>
   );
 }
 
-const style = StyleSheet.create({
-
-  container1: {
+const styles = StyleSheet.create({
+  buttonContainer: {
+    marginTop: 30,
+    borderRadius: 20,
+    backgroundColor: "#4c68d7", // Change to the desired color
+    paddingVertical: 10,
+    paddingHorizontal: 20,
+  },
+  buttonText: {
+    color: "#fff",
+    fontWeight: "bold",
+    fontSize: 16,
+    textAlign: "center",
+  },
+  profileContainer: {
+    flex: 1,
+    paddingHorizontal: 20,
+    paddingVertical: 30,
+    alignItems: "center",
+  },
+  profileItem: {
+    fontSize: 18,
+    fontWeight: "bold",
+    marginBottom: 10,
+    textAlign: "center",
+  },
+  header: {
     flexDirection: "row",
     width: "100%",
     height: 50,
+    backgroundColor: "#f0f0f0", // Change to the desired color
     alignItems: "center",
     justifyContent: "space-between",
-    marginBottom: 15,
+    paddingHorizontal: 20, // Add some padding to the sides
   },
-
   title: {
     fontWeight: "bold",
     fontSize: 25,
+    color: "#333", // Change to the desired color
   },
-
-  userImage: {
-    height: 70,
-    width: 70,
-    borderRadius: 50,
-    borderColor: "#ffffff",
-  },
-
-  // userName: {
-  //   textAlign: "center",
-  //   fontSize: 12,
-  //   marginTop: 5,
-  //   letterSpacing: 2,
-  // },
-
-  // addBtnContainer: {
-  //   marginTop: 55,
-  //   backgroundColor: "#4c68d7",
-  //   marginLeft: "53%",
-  //   width: 19,
-  //   height: 19,
-  //   borderRadius: 50,
-  //   borderWidth: 1.5,
-  //   borderColor: "#fff",
-  //   justifyContent: "center",
-  // },
-
-  // addBtn: {
-  //   alignItems: "center",
-  // },
-
-  icons: {
-    height: 50,
-    width: 50,
-    borderRadius: 50,
-    // borderColor: "yellow",
-    borderWidth: 3,
-    marginStart: 10,
-  },
-
-  icons1: {
-    marginEnd: 10,
-  },
-
-  about: {
-    alignItems: "center",
-    padding: 15,
-    textAlign: "center",
-    paddingTop: 100,
-  },
-
-  logico: {
-    fontSize: 12,
-    margin: 35,
-    alignItems: "center",
-  },
-
-  icons3: {
-    height: 30,
-    width: 26,
-    padding: 10,
-  },
-
-  profile: {
-    flex: 1,
-    padding: 10,
-    fontWeight: "bold",
+  container: {
+    backgroundColor: "#fff", // Change to the desired color
+    flex: 1, // Ensure the container fills the entire screen
   },
 });
